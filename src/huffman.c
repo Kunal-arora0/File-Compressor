@@ -49,3 +49,21 @@ HuffmanNode *build_huffman_tree(unsigned long freq[256]){
     heap_destroy(heap);
     return root;
 }
+
+void generate_codes(HuffmanNode *node , char *code , int depth){
+    if(node == NULL){
+        return;
+    }
+
+    if(node->left == NULL && node->right == NULL){
+        code[depth] = '\0';
+        printf("%c -> %s\n" , node->character, code);
+        return;
+    }
+
+    code[depth] = '0';
+    generate_codes(node->left, code, depth+1);
+
+    code[depth] = '1';
+    generate_codes(node->right, code, depth+1);
+}
