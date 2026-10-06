@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include<string.h>
 #include<stdlib.h>
 #include "huffman.h"
 #include "heap.h"
@@ -50,20 +51,26 @@ HuffmanNode *build_huffman_tree(unsigned long freq[256]){
     return root;
 }
 
-void generate_codes(HuffmanNode *node , char *code , int depth){
+void generate_codes(HuffmanNode *node , char *code , int depth, char *codes[256]){
     if(node == NULL){
         return;
     }
 
     if(node->left == NULL && node->right == NULL){
         code[depth] = '\0';
-        printf("%c -> %s\n" , node->character, code);
+        codes[node->character] = malloc(depth+1);
+
+        if(codes[node->character] == NULL){
+            return;
+        }
+        strcpy(codes[node->character], code);
         return;
     }
 
+
     code[depth] = '0';
-    generate_codes(node->left, code, depth+1);
+    generate_codes(node->left, code, depth+1, codes);
 
     code[depth] = '1';
-    generate_codes(node->right, code, depth+1);
+    generate_codes(node->right, code, depth+1, codes);
 }

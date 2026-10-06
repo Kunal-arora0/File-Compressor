@@ -12,5 +12,5 @@ typedef struct HuffmanNode{
 
 HuffmanNode *huffman_create_node(unsigned char character, unsigned long frequency);
 HuffmanNode *build_huffman_tree(unsigned long freq[256]);
-void generate_codes(HuffmanNode *node , char *code, int depth);
+void generate_codes(HuffmanNode *node , char *code, int depth, char *codes[256]);
 #endif
