@@ -56,17 +56,21 @@ void generate_codes(HuffmanNode *node , char *code , int depth, char *codes[256]
         return;
     }
 
-    if(node->left == NULL && node->right == NULL){
-        code[depth] = '\0';
-        codes[node->character] = malloc(depth+1);
+    if (node->left == NULL && node->right == NULL) {
+        if (depth == 0) {
+            code[depth++] = '0';
+        }
 
-        if(codes[node->character] == NULL){
+        code[depth] = '\0';
+        codes[node->character] = malloc(depth + 1);
+
+        if (codes[node->character] == NULL) {
             return;
         }
+
         strcpy(codes[node->character], code);
         return;
     }
-
 
     code[depth] = '0';
     generate_codes(node->left, code, depth+1, codes);

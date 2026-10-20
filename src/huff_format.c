@@ -45,11 +45,11 @@ int write_header(int fileDescriptor, uint64_t fileSize, uint64_t freq[BYTE_VALUE
     return 0;
 }
 
-int read_header(int fileDescriptor, uint64_t *fileSize, uint64_t freq[BYTE_VALUES]){
+int  read_header(int fileDescriptor, uint64_t *fileSize, uint64_t freq[BYTE_VALUES]){
 
     unsigned char bytes[8];
 
-    int input = read(fileDescriptor, bytes ,4);
+    ssize_t input = read(fileDescriptor, bytes ,4);
 
     if(input!=4){
         return -1;

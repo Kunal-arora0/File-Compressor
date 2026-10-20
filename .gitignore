@@ -1,0 +1,20 @@
+# Compiled executables
+compressor
+compressor_test
+heap_test
+huffman_heap_demo
+bitio_demo
+
+# Generated compressed and restored files
+*.huff
+*_restored.*
+restored.txt
+binary_restored.bin
+
+# Temporary test files
+repetitive.txt
+core
+core.*
+
+# Local test documents
+process.pdf
